@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title><?php getwebname("titles"); echo"|"; gettagline("titles");?></title>
+	<title><?php getwebname("titles");?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<link id="browser_favicon" rel="shortcut icon" href="blogadmin/images/<?php geticon("titles"); ?>">
@@ -89,16 +89,11 @@
 											<span class="count"></span> Facebook</a>
 										</li>
 										<li>
-											<a class="dribble" href="<?php getlinks("links","dribble");?>">
-												<i class="fab fa-dribbble"></i>
+											<a class="instagram" href="<?php getlinks("links","instagram");?>">
+												<i class="fab fa-instagram"></i>
 
-												<span class="count"></span> Dribble</a>
+												<span class="count"></span> Instagram</a>
 											</li>
-											<li>
-												<a class="pin" href="<?php getlinks("links","pinterest");?>">
-													<i class="fab fa-pinterest"></i>
-													<span class="count"></span> Pinterest</a>
-												</li>
 
 											</ul>
 										</div>

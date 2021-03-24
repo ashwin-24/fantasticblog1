@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2021 at 12:49 PM
--- Server version: 10.4.16-MariaDB
--- PHP Version: 7.4.12
+-- Generation Time: Apr 28, 2018 at 04:07 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.0.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,38 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `blog_admin_db`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_blogs`
---
-
-CREATE TABLE `admin_blogs` (
-  `id` int(100) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `description` varchar(300) NOT NULL,
-  `image` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_users`
---
-
-CREATE TABLE `admin_users` (
-  `id` int(255) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `admin_users`
---
-
-INSERT INTO `admin_users` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'pass');
 
 -- --------------------------------------------------------
 
@@ -157,9 +126,9 @@ CREATE TABLE `links` (
   `googleplus` varchar(40) DEFAULT NULL,
   `pinterest` varchar(40) DEFAULT NULL,
   `dribble` varchar(40) DEFAULT NULL,
-  `comments_script` text DEFAULT NULL,
-  `sharing_script` text DEFAULT NULL,
-  `javascript` text DEFAULT NULL
+  `comments_script` text,
+  `sharing_script` text,
+  `javascript` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -180,9 +149,9 @@ CREATE TABLE `membership_grouppermissions` (
   `groupID` int(11) DEFAULT NULL,
   `tableName` varchar(100) DEFAULT NULL,
   `allowInsert` tinyint(4) DEFAULT NULL,
-  `allowView` tinyint(4) NOT NULL DEFAULT 0,
-  `allowEdit` tinyint(4) NOT NULL DEFAULT 0,
-  `allowDelete` tinyint(4) NOT NULL DEFAULT 0
+  `allowView` tinyint(4) NOT NULL DEFAULT '0',
+  `allowEdit` tinyint(4) NOT NULL DEFAULT '0',
+  `allowDelete` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -211,7 +180,7 @@ INSERT INTO `membership_grouppermissions` (`permissionID`, `groupID`, `tableName
 CREATE TABLE `membership_groups` (
   `groupID` int(10) UNSIGNED NOT NULL,
   `name` varchar(20) DEFAULT NULL,
-  `description` text DEFAULT NULL,
+  `description` text,
   `allowSignup` tinyint(4) DEFAULT NULL,
   `needsApproval` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -236,9 +205,9 @@ CREATE TABLE `membership_userpermissions` (
   `memberID` varchar(20) NOT NULL,
   `tableName` varchar(100) DEFAULT NULL,
   `allowInsert` tinyint(4) DEFAULT NULL,
-  `allowView` tinyint(4) NOT NULL DEFAULT 0,
-  `allowEdit` tinyint(4) NOT NULL DEFAULT 0,
-  `allowDelete` tinyint(4) NOT NULL DEFAULT 0
+  `allowView` tinyint(4) NOT NULL DEFAULT '0',
+  `allowEdit` tinyint(4) NOT NULL DEFAULT '0',
+  `allowDelete` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -294,11 +263,11 @@ CREATE TABLE `membership_users` (
   `groupID` int(10) UNSIGNED DEFAULT NULL,
   `isBanned` tinyint(4) DEFAULT NULL,
   `isApproved` tinyint(4) DEFAULT NULL,
-  `custom1` text DEFAULT NULL,
-  `custom2` text DEFAULT NULL,
-  `custom3` text DEFAULT NULL,
-  `custom4` text DEFAULT NULL,
-  `comments` text DEFAULT NULL,
+  `custom1` text,
+  `custom2` text,
+  `custom3` text,
+  `custom4` text,
+  `comments` text,
   `pass_reset_key` varchar(100) DEFAULT NULL,
   `pass_reset_expiry` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -351,7 +320,7 @@ CREATE TABLE `titles` (
   `bannertext2` varchar(150) DEFAULT NULL,
   `bannertext3` varchar(150) DEFAULT NULL,
   `bannertext4` varchar(150) DEFAULT NULL,
-  `detailed_description` text DEFAULT NULL,
+  `detailed_description` text,
   `address` varchar(40) DEFAULT NULL,
   `email` varchar(80) DEFAULT NULL,
   `phone` varchar(40) DEFAULT NULL,
@@ -375,7 +344,7 @@ CREATE TABLE `visitor_info` (
   `id` int(11) NOT NULL,
   `ip_address` varchar(255) DEFAULT NULL,
   `user_agent` varchar(255) DEFAULT NULL,
-  `time_accessed` timestamp NOT NULL DEFAULT current_timestamp()
+  `time_accessed` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -441,19 +410,6 @@ INSERT INTO `visitor_info` (`id`, `ip_address`, `user_agent`, `time_accessed`) V
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin_blogs`
---
-ALTER TABLE `admin_blogs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `admin_users`
---
-ALTER TABLE `admin_users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UNIQUE` (`username`);
 
 --
 -- Indexes for table `banner_posts`
@@ -545,18 +501,6 @@ ALTER TABLE `visitor_info`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `admin_blogs`
---
-ALTER TABLE `admin_blogs`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `admin_users`
---
-ALTER TABLE `admin_users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `banner_posts`

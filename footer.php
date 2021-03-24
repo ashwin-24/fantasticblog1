@@ -50,15 +50,9 @@
 								</a>
 							</li>
 							<li class="mx-3">
-								<a class="facebook" href="<?php getlinks("links","googleplus");?>">
-									<i class="fab fa-google-plus-g"></i>
-									<span>Google+</span>
-								</a>
-							</li>
-							<li>
-								<a class="facebook" href="<?php getlinks("links","pinterest");?>">
-									<i class="fab fa-pinterest-p"></i>
-									<span>Pinterest</span>
+								<a class="facebook" href="<?php getlinks("links","instagram");?>">
+									<i class="fab fa-instagram"></i>
+									<span>Instagram</span>
 								</a>
 							</li>
 						</ul>
@@ -66,10 +60,7 @@
 					</div>
 				</div>
 				<div class="w3layouts-agile-copyrightbottom">
-					<p>© <?php $current=date("Y"); print_r($current); echo"&nbsp;"; getwebname("titles");?>. All Rights Reserved | Web System by
-						<a href="http://www.ronaldngoda.rf.gd">Ronnie +2540708344101</a>
-					</p>
-
+					<p>© <?php $current=date("Y"); print_r($current); echo"&nbsp;"; getwebname("titles");?>. All Rights Reserved</p>
 				</div>
 			</div>
 			<!-- //footer -->

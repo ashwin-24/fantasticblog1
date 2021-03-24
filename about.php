@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title><?php getwebname("titles"); echo"|"; gettagline("titles");?>| About</title>
+	<title><?php getwebname("titles");?>| About</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<link id="browser_favicon" rel="shortcut icon" href="blogadmin/images/<?php geticon("titles"); ?>">
@@ -54,7 +54,7 @@
 							</a>
 						</div>
 						<h3>
-							<?php getwebname("titles"); echo"|"; gettagline("titles");?>
+							<?php getwebname("titles");?>
 						</h3>
 						<p><?php getdetaileddescription("titles");?></p>
 					</div>

@@ -4,17 +4,16 @@
 			<div class="row">
 				<div class="col-md-4 logo text-left">
 					<a class="navbar-brand" href="index.php">
-						<i class="fab fa-linode"></i> <?php getwebname("titles"); ?></a>
+						<img src="images/Logo.png" style="height: 40px;"> <?php getwebname("titles"); ?></a>
 				</div>
 				<div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
-					<span>Welcome Back!</span>
 					<span class="mx-lg-4 mx-md-2  mx-1">
 						<a href="blogadmin/index.php">
-							<i class="fas fa-lock"></i> <strong>Sign In</strong></a>
+							<i class="fas fa-lock"></i> <b>Sign In</b></a>
 					</span>
 					<span>
 						<a href="blogadmin/membership_signup.php">
-							<i class="far fa-user"></i> <strong>Register</strong></a>
+							<i class="far fa-user"></i> <b>Register</b></a>
 					</span>
 				</div>
 				<div class="col-md-4 log-icons text-right">
@@ -34,13 +33,8 @@
 							</a>
 						</li>
 						<li>
-							<a href="<?php getlinks("links","dribble");?>" class="dribble3 mx-2">
-								<i class="fab fa-dribbble"></i>
-							</a>
-						</li>
-						<li>
-							<a href="<?php getlinks("links","pinterest");?>" class="pin">
-								<i class="fab fa-pinterest-p"></i>
+							<a href="<?php getlinks("links","instagram");?>" class="dribble3 mx-2">
+								<i class="fab fa-instagram"></i>
 							</a>
 						</li>
 					</ul>
@@ -78,9 +72,6 @@
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="contact.php">Contact</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="admin-signin.php">Admin</a>
 							</li>
 
 						</ul>

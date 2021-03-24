@@ -6,7 +6,7 @@ require_once('database/db.php');//db config file
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>Search|<?php getwebname("titles"); echo"|"; gettagline("titles");?></title>
+	<title>Search|<?php getwebname("titles");?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<link id="browser_favicon" rel="shortcut icon" href="blogadmin/images/<?php geticon("titles"); ?>">

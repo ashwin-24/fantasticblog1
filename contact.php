@@ -3,7 +3,7 @@
 <html lang="zxx">
 
 <head>
-	<title><?php getwebname("titles"); echo"|"; gettagline("titles");?> | Contact</title>
+	<title><?php getwebname("titles");?> | Contact</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<link id="browser_favicon" rel="shortcut icon" href="blogadmin/images/<?php geticon("titles"); ?>">
@@ -61,7 +61,7 @@
 								</div>
 								<div class="col-md-8 address-right text-left">
 									<h6>Address</h6>
-									<p> <?php getcontacts("titles","1");?>
+									<p> B-Block, Chouhan Classes, Sector-14, Udaipur, Rajasthan
 
 									</p>
 								</div>

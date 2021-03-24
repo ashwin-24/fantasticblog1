@@ -1,25 +1,4 @@
 <?php 
-function gettagline($table){
-	require("database/db_connect.php");
-	$sql="SELECT * FROM $table ";
-	if ($result=mysqli_query($con,$sql))
-	{
-      	//count number of rows in query result
-		$rowcount=mysqli_num_rows($result);
-      	//if no rows returned show no news alert
-		if ($rowcount==0) {
-      		# code...
-			echo 'No Tagline!!';
-		}
-      	//if there are rows available display all the results
-		foreach ($result as $titles => $tagline) {
-      	# code...
-			echo ''.$tagline['tagline'].'';
-		}
-	}
-
-	mysqli_close($con);
-}
 function geticon($table){
 	require("database/db_connect.php");
 	$sql="SELECT * FROM $table ";
@@ -237,14 +216,6 @@ function getbannertext($table,$position){
 			elseif ($position==2) {
 					# code...
 				echo ''.$bannertext['bannertext2'].'';
-			}
-			elseif ($position==3) {
-					# code...
-				echo ''.$bannertext['bannertext3'].'';
-			}
-			elseif ($position==4) {
-					# code...
-				echo ''.$bannertext['bannertext4'].'';
 			}
 		}
 	}

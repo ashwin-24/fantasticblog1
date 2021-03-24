@@ -35,7 +35,7 @@
                   </div>
                   <div class="col-xs-6 text-right">
                     <p class="announcement-heading"><?php admincounter("links");?></p>
-                    <p class="announcement-text"><strong>Links</strong></p>
+                    <p class="announcement-text"><strong>Links</strong></p><br>
                   </div>
                 </div>
               </div>

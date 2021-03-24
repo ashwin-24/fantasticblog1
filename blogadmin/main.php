@@ -17,7 +17,7 @@
                   </div>
                   <div class="col-xs-6 text-right">
                     <p class="announcement-heading"><?php countrecords("blogs","all");?></p>
-                    <p class="announcement-text"><strong>Blogs</strong></p>
+                    <p class="announcement-text"><strong>News</strong></p>
                   </div>
                 </div>
               </div>
@@ -131,12 +131,5 @@
     <!-- JavaScript -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
-<footer class="footer footer-inverse">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © Fantastic Blog Admin 2018.By Ronnie <a href="http://www.ronaldngoda.rf.gd">+254708344101</a></small>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>
