@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2018 at 04:07 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.0.29
+-- Generation Time: Apr 03, 2021 at 07:09 PM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -87,12 +86,13 @@ CREATE TABLE `blog_categories` (
 --
 
 INSERT INTO `blog_categories` (`id`, `name`) VALUES
-(1, 'tricks'),
-(2, 'hacks'),
-(3, 'offers'),
-(4, 'promotion'),
-(5, 'devices'),
-(6, 'entertainment');
+(1, 'Business'),
+(2, 'Politics'),
+(3, 'Sports'),
+(4, 'Lifestyle'),
+(5, 'Entertainment'),
+(6, 'Technlogy'),
+(7, 'Education');
 
 -- --------------------------------------------------------
 
@@ -121,22 +121,20 @@ INSERT INTO `editors_choice` (`id`, `blog`) VALUES
 
 CREATE TABLE `links` (
   `id` int(10) UNSIGNED NOT NULL,
-  `facebook` varchar(40) DEFAULT NULL,
-  `twitter` varchar(40) DEFAULT NULL,
-  `googleplus` varchar(40) DEFAULT NULL,
-  `pinterest` varchar(40) DEFAULT NULL,
-  `dribble` varchar(40) DEFAULT NULL,
-  `comments_script` text,
-  `sharing_script` text,
-  `javascript` text
+  `facebook` varchar(200) DEFAULT NULL,
+  `twitter` varchar(200) DEFAULT NULL,
+  `instagram` varchar(200) DEFAULT NULL,
+  `comments_script` text DEFAULT NULL,
+  `sharing_script` text DEFAULT NULL,
+  `javascript` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `links`
 --
 
-INSERT INTO `links` (`id`, `facebook`, `twitter`, `googleplus`, `pinterest`, `dribble`, `comments_script`, `sharing_script`, `javascript`) VALUES
-(1, 'http://www.facebook.com', 'http://www.twitter.com', 'http://www.plus.google.com', 'http://www.pinterest.com', 'http://www.dribble.com', '<div class=\"fb-comments container\" data-href=\"http://www.uoecu.org/newsview.php?id=<?php echo $row[\'id\'];?>\" data-numposts=\"20\" width=\"100%\"></div>', '<div class=\"addthis_sharing_toolbox\"></div>', '<script>(function(d, s, id) {\r\n		var js, fjs = d.getElementsByTagName(s)[0];\r\n		if (d.getElementById(id)) return;\r\n		js = d.createElement(s); js.id = id;\r\n		js.src = \'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=298807240601869\';\r\n		fjs.parentNode.insertBefore(js, fjs);\r\n	}(document, \'script\', \'facebook-jssdk\'));</script>\r\n<script type=\"text/javascript\" src=\"//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57587edcb1479678\"></script>');
+INSERT INTO `links` (`id`, `facebook`, `twitter`, `instagram`, `comments_script`, `sharing_script`, `javascript`) VALUES
+(1, 'https://www.facebook.com/The-Udaipur-News-104251845090312', 'http://www.twitter.com', 'https://instagram.com/the_udaipur_news?igshid=1c6rf9l1ex8dx', '<div class=\"fb-comments container\" data-href=\"http://www.uoecu.org/newsview.php?id=<?php echo $row[\'id\'];?>\" data-numposts=\"20\" width=\"100%\"></div>', '<div class=\"addthis_sharing_toolbox\"></div>', '<script>(function(d, s, id) {\r\n		var js, fjs = d.getElementsByTagName(s)[0];\r\n		if (d.getElementById(id)) return;\r\n		js = d.createElement(s); js.id = id;\r\n		js.src = \'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=298807240601869\';\r\n		fjs.parentNode.insertBefore(js, fjs);\r\n	}(document, \'script\', \'facebook-jssdk\'));</script>\r\n<script type=\"text/javascript\" src=\"//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57587edcb1479678\"></script>');
 
 -- --------------------------------------------------------
 
@@ -149,9 +147,9 @@ CREATE TABLE `membership_grouppermissions` (
   `groupID` int(11) DEFAULT NULL,
   `tableName` varchar(100) DEFAULT NULL,
   `allowInsert` tinyint(4) DEFAULT NULL,
-  `allowView` tinyint(4) NOT NULL DEFAULT '0',
-  `allowEdit` tinyint(4) NOT NULL DEFAULT '0',
-  `allowDelete` tinyint(4) NOT NULL DEFAULT '0'
+  `allowView` tinyint(4) NOT NULL DEFAULT 0,
+  `allowEdit` tinyint(4) NOT NULL DEFAULT 0,
+  `allowDelete` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -180,7 +178,7 @@ INSERT INTO `membership_grouppermissions` (`permissionID`, `groupID`, `tableName
 CREATE TABLE `membership_groups` (
   `groupID` int(10) UNSIGNED NOT NULL,
   `name` varchar(20) DEFAULT NULL,
-  `description` text,
+  `description` text DEFAULT NULL,
   `allowSignup` tinyint(4) DEFAULT NULL,
   `needsApproval` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -205,9 +203,9 @@ CREATE TABLE `membership_userpermissions` (
   `memberID` varchar(20) NOT NULL,
   `tableName` varchar(100) DEFAULT NULL,
   `allowInsert` tinyint(4) DEFAULT NULL,
-  `allowView` tinyint(4) NOT NULL DEFAULT '0',
-  `allowEdit` tinyint(4) NOT NULL DEFAULT '0',
-  `allowDelete` tinyint(4) NOT NULL DEFAULT '0'
+  `allowView` tinyint(4) NOT NULL DEFAULT 0,
+  `allowEdit` tinyint(4) NOT NULL DEFAULT 0,
+  `allowDelete` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -263,11 +261,11 @@ CREATE TABLE `membership_users` (
   `groupID` int(10) UNSIGNED DEFAULT NULL,
   `isBanned` tinyint(4) DEFAULT NULL,
   `isApproved` tinyint(4) DEFAULT NULL,
-  `custom1` text,
-  `custom2` text,
-  `custom3` text,
-  `custom4` text,
-  `comments` text,
+  `custom1` text DEFAULT NULL,
+  `custom2` text DEFAULT NULL,
+  `custom3` text DEFAULT NULL,
+  `custom4` text DEFAULT NULL,
+  `comments` text DEFAULT NULL,
   `pass_reset_key` varchar(100) DEFAULT NULL,
   `pass_reset_expiry` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -320,7 +318,7 @@ CREATE TABLE `titles` (
   `bannertext2` varchar(150) DEFAULT NULL,
   `bannertext3` varchar(150) DEFAULT NULL,
   `bannertext4` varchar(150) DEFAULT NULL,
-  `detailed_description` text,
+  `detailed_description` text DEFAULT NULL,
   `address` varchar(40) DEFAULT NULL,
   `email` varchar(80) DEFAULT NULL,
   `phone` varchar(40) DEFAULT NULL,
@@ -332,7 +330,7 @@ CREATE TABLE `titles` (
 --
 
 INSERT INTO `titles` (`id`, `website_name`, `tagline`, `icon`, `keywords`, `short_description`, `bannertext1`, `bannertext2`, `bannertext3`, `bannertext4`, `detailed_description`, `address`, `email`, `phone`, `googlemap`) VALUES
-(1, 'Fatastic Blog', 'Blogging For Passion', '95401600_1524766758.jpg', 'blog,tech blog,tricks,hacks,technology news,fantastic blog', 'This is a blog and content management system,You can easily setup your blog and customize it according to your needs.This is a short description of your blog.You can change this', 'Create a lifestyle <span>you desire</span>', 'Engaging Purposeful <span>and Creative</span>', 'Create the lifestyle <span>you desire</span>', 'Engaging Purposeful <span>and Creative</span>', 'This is a blog and content management system,You can easily setup your blog and customize it according to your needs.It is easy to use and manage.Multiple users can signup and be able contribute content.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Nairobi,Kenya', 'info@fantasticblog.com', '0708344101', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100949.24429313939!2d-122.44206553967531!3d37.75102885910819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1');
+(1, 'The Udaipur News', 'Blogging For Passion', 'Logo.png', 'blog,tech blog,tricks,hacks,technology news,fantastic blog', 'This is a blog and content management system,You can easily setup your blog and customize it according to your needs.This is a short description of your blog.You can change this', '', '', '', '', 'This is a blog and content management system,You can easily setup your blog and customize it according to your needs.It is easy to use and manage.Multiple users can signup and be able contribute content.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Udaipur, Rajasthan', 'theudaipurnews@gmail.com', '+91-7023393850', 'https://maps.google.com/maps?q=B-Block,%20Chouhan%20Classes,%20Sector-14,%20Udaipur&t=&z=13&ie=UTF8&iwloc=&output=embed');
 
 -- --------------------------------------------------------
 
@@ -344,7 +342,7 @@ CREATE TABLE `visitor_info` (
   `id` int(11) NOT NULL,
   `ip_address` varchar(255) DEFAULT NULL,
   `user_agent` varchar(255) DEFAULT NULL,
-  `time_accessed` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `time_accessed` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -518,7 +516,7 @@ ALTER TABLE `blogs`
 -- AUTO_INCREMENT for table `blog_categories`
 --
 ALTER TABLE `blog_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `editors_choice`
